@@ -1,16 +1,41 @@
 # ClearLogs
 Laravel comand 
 
-Comando para eliminar logs antiguos de Laravel. Soporta canales "single" y "daily" 
+Command to remove old logs from Laravel. Supports "single" and "daily" channels
 
-## Uso
-Se puede ejecutar como comando de artisan `php artisan log:clear`
+## Installation
+``` sh
+composer require frugone/clear-logs
+```
 
-O se puede agregar como tarea (schedule) agregando el comando en `app/Console/Kernel.php`
+Add the service provider in `config/app.php`
+```php
+'providers' => [
+    ...
+    Frugone\ClearLogs\ClearLogsServiceProvider::class,
+];
+```
+Add the configuration file (optionally)
+``` sh
+php artisan vendor:publish --tag="clear-logs-config"
+```
+
+## Usage
+Execute artisan command:
+``` sh
+php artisan log:clear
+``` 
+
+Or run as a schedule.  Add this code in `app/Console/Kernel.php`
 
 ``` php
-    protected function schedule(Schedule $schedule)
-    {
-        $schedule->command('log:clear')->daily();
-    }
+protected function schedule(Schedule $schedule)
+{
+    $schedule->command('log:clear')->daily();
+}
 ```
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
