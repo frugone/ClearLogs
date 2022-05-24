@@ -23,7 +23,14 @@ class ClearLogs extends Command
      * Number of days to preserve logs
      * @var Int
      */
-    protected $days = 7;
+    protected $days;
+
+    /**
+     * Indicates the criteria to evaluate the date of the log file to be deleted.
+     * it can be by date of modification or by name of the file ej:"laravel-2022-05-22.log"
+     * @var String mit|name
+     */
+    protected $evalDateByNameOrMTime;
 
     /**
      * The name and signature of the console command.
@@ -47,6 +54,8 @@ class ClearLogs extends Command
     public function __construct()
     {
         parent::__construct();
+        $this->days =  config('clearlogs.days');
+        $this->evalDateByNameOrMTime =  config('clearlogs.evalDateByNameOrMTime');
     }
 
     /**
@@ -89,10 +98,7 @@ class ClearLogs extends Command
      */
     private function singleLogsClear($dateKeep)
     {
-        //$line = $this->getLineToPreserve($date);
-
         $logFile =  $this->logFilePath . '/' . self::LOG_FILE_NAME . '.' . self::LOG_FILE_EXTENSION;
-
         $lines = file($logFile);
         foreach ($lines as $lineNumber => $line) {
             $date = substr($line, 1, 10);
@@ -100,7 +106,9 @@ class ClearLogs extends Command
                 $date = Carbon::createFromFormat('Y-m-d', $date);
                 if ($date >= $dateKeep) {
                     if ($lineNumber > 0) {
-                        file_put_contents($logFile, implode(PHP_EOL, array_slice($lines, $lineNumber)));
+                        // use PHP_EOL if you use flag FILE_IGNORE_NEW_LINES in file()
+                        //file_put_contents($logFile, implode(PHP_EOL, array_slice($lines, $lineNumber)));
+                        file_put_contents($logFile, implode(array_slice($lines, $lineNumber)));
                     }
                     break;
                 }
@@ -138,8 +146,10 @@ class ClearLogs extends Command
         $logFiles = collect([]);
         foreach ($files as $logFile) {
             if ($logFile->getExtension() == self::LOG_FILE_EXTENSION) {
-                $date = Carbon::createFromTimestamp($logFile->getMTime());
-                //$date = $this->getDateByName( $logFile->getFilename());
+                $date = ($this->evalDateByNameOrMTime == 'name') ?
+                    $this->getDateByName($logFile->getFilename()) :
+                    Carbon::createFromTimestamp($logFile->getMTime());
+
                 if ($date && $date < $dateKeep) {
                     $logFiles->put($date->format('Y-m-d'), $logFile);
                 }
