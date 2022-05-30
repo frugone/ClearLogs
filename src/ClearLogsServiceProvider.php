@@ -3,6 +3,7 @@
 namespace Frugone\ClearLogs;
 
 use Illuminate\Support\ServiceProvider;
+use Frugone\ClearLogs\Console\Commands\ClearLogs;
 
 class ClearLogsServiceProvider extends ServiceProvider
 {

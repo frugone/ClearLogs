@@ -1,6 +1,6 @@
 <?php
 
-namespace Frugone\ClearLogs;
+namespace Frugone\ClearLogs\Console\Commands;
 
 use Illuminate\Console\Command;
 use Carbon\Carbon;

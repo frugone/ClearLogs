@@ -1,0 +1,1 @@
+{"version":1,"defects":{"Frugone\\ClearLogs\\Tests\\ClearLogsTest::singleLogtest":3,"Frugone\\ClearLogs\\Tests\\ClearLogsTest::dailyLogTest":3},"times":{"Frugone\\ClearLogs\\Tests\\ClearLogsTest::singleLogtest":0.105,"Frugone\\ClearLogs\\Tests\\ClearLogsTest::dailyLogTest":0.01}}
