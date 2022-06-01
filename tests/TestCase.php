@@ -18,8 +18,8 @@ class TestCase extends \Orchestra\Testbench\TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->logPath = storage_path('logs').'/';
-       // $this->deleteAllLogs();
+        $this->logPath = storage_path('logs') . '/';
+        $this->deleteAllLogs();
     }
 
     public function tearDown(): void
@@ -60,12 +60,12 @@ class TestCase extends \Orchestra\Testbench\TestCase
      * @param int $days
      * @return DatePeriod
      */
-    protected function createDailyLogs(int $days, $fakeTime=true): DatePeriod
+    protected function createDailyLogs(int $days, $fakeTime = true): DatePeriod
     {
         $period = $this->getPeriodRange($days);
         foreach ($period as $date) {
             $logFileName = $this->getLogNameByDate($date);
-            $time = ($fakeTime)?time():$date->time();
+            $time = ($fakeTime) ? time() : $date->time();
             $this->addLog($logFileName, $time);
         }
         return $period;
@@ -79,9 +79,9 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPeriodRange(int $days): DatePeriod
     {
         return new DatePeriod(
-             (new DateTime('NOW'))->modify('- ' . ($days - 1) . ' day'),
-             new \DateInterval('P1D'),
-             (new DateTime('NOW'))->modify('+ 1 day'),
+            (new DateTime('NOW'))->modify('- ' . ($days - 2) . ' day'),
+            new \DateInterval('P1D'),
+            (new DateTime('NOW'))->modify('+ 2 day'),
         );
     }
 
@@ -115,7 +115,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
      */
     private function deleteAllLogs(): void
     {
-        $this->deleteLog(glob($this->logPath . '*'));
+        //$this->deleteLog(glob($this->logPath . '*'));
     }
 
     /**
@@ -143,6 +143,6 @@ class TestCase extends \Orchestra\Testbench\TestCase
      */
     protected function getFakeLineLogByDate(DateTime $date): string
     {
-        return  '[' . $date->format('Y-m-d H:i:s') . '] fake log '. $date->format('D');
+        return  '[' . $date->format('Y-m-d H:i:s') . '] fake log ' . $date->format('D');
     }
 }
