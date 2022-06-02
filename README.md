@@ -19,6 +19,7 @@ Add the configuration file (optionally)
 ``` sh
 php artisan vendor:publish --tag="clear-logs-config"
 ```
+Optionally, you may also run php artisan vendor:publish --tag="clear-logs-config" to publish the configuration file in config/clearlogs.php 
 
 ## Usage
 Execute artisan command:
@@ -33,6 +34,30 @@ protected function schedule(Schedule $schedule)
 {
     $schedule->command('log:clear')->daily();
 }
+```
+
+## Configuration
+
+Pblish configuration
+
+```sh
+php artisan vendor:publish --tag="clear-logs-config"
+```
+
+This command create file configuration options to: `config/clearlogs.php`
+```php
+/*
+ * Number of days to preserve logs
+ * @var int
+ */
+'days' => 7,
+
+/**
+ * Indicates the criteria to evaluate the date of the log file to be deleted.
+ * it can be by date of modification or by name of the file ej:"laravel-2022-05-22.log"
+ * @var String mit|name
+ */
+'evalDateByNameOrMTime' => 'name',
 ```
 
 ## License
