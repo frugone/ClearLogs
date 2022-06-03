@@ -55,7 +55,7 @@ class ClearLogs extends Command
     {
         parent::__construct();
         $this->days =  config('clearlogs.days');
-        $this->evalDateByNameOrMTime =  config('clearlogs.evalDateByNameOrMTime');
+        $this->evalDateByNameOrMTime =  config('clearlogs.evalDateByNameOrMTime', 'name');
     }
 
     /**
@@ -118,11 +118,12 @@ class ClearLogs extends Command
 
     /**
      * Gets the date from which logs are to be preserved
-     * @param Int $days  cantidad de dias a conservar
+     * @param Int $days number of days to keep
+     * @return Carbon\Carbon
      */
     private function getDatePreserveLogs($days)
     {
-        return Carbon::now()->subDays($days)->startOfDay();
+        return Carbon::now()->subDays($days - 2)->startOfDay();
     }
 
     /**
