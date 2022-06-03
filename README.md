@@ -17,7 +17,7 @@ Add the service provider in `config/app.php`
 ```
 Add the configuration file (optionally)
 ``` sh
-php artisan vendor:publish --tag="clear-logs-config"
+php artisan vendor:publish --provider="Frugone\ClearLogs\ClearLogsServiceProvider"
 ```
 Optionally, you may also run php artisan vendor:publish --tag="clear-logs-config" to publish the configuration file in config/clearlogs.php 
 
