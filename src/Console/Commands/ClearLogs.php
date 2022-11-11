@@ -79,7 +79,6 @@ class ClearLogs extends Command
         }
     }
 
-
     /**
      * Deletes log files prior to the specified date
      * @param Carbon $date
@@ -133,7 +132,6 @@ class ClearLogs extends Command
     {
         return preg_match('/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/', $value);
     }
-
 
     /**
      * Return all log files after the indicated date
