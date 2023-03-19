@@ -1,8 +1,8 @@
 <?php
 
-namespace Frugone\ClearLogs\Tests;
+namespace Pfrug\ClearLogs\Tests;
 
-use Frugone\ClearLogs\Console\Commands\ClearLogs;
+use Pfrug\ClearLogs\Console\Commands\ClearLogs;
 use Config;
 
 class ClearLogsTest extends TestCase

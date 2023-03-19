@@ -1,9 +1,9 @@
 <?php
 
-namespace Frugone\ClearLogs;
+namespace Pfrug\ClearLogs;
 
 use Illuminate\Support\ServiceProvider;
-use Frugone\ClearLogs\Console\Commands\ClearLogs;
+use Pfrug\ClearLogs\Console\Commands\ClearLogs;
 
 class ClearLogsServiceProvider extends ServiceProvider
 {

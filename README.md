@@ -5,19 +5,19 @@ Command to remove old logs from Laravel. Supports "single" and "daily" channels
 
 ## Installation
 ``` sh
-composer require frugone/clear-logs
+composer require pfrug/clear-logs
 ```
 
 Add the service provider in `config/app.php`
 ```php
 'providers' => [
     ...
-    Frugone\ClearLogs\ClearLogsServiceProvider::class,
+    Pfrug\ClearLogs\ClearLogsServiceProvider::class,
 ];
 ```
 Add the configuration file (optionally)
 ``` sh
-php artisan vendor:publish --provider="Frugone\ClearLogs\ClearLogsServiceProvider"
+php artisan vendor:publish --provider="Pfrug\ClearLogs\ClearLogsServiceProvider"
 ```
 Optionally, you may also run php artisan vendor:publish --tag="clear-logs-config" to publish the configuration file in config/clearlogs.php 
 

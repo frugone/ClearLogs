@@ -1,8 +1,8 @@
 <?php
 
-namespace Frugone\ClearLogs\Tests;
+namespace Pfrug\ClearLogs\Tests;
 
-use Frugone\ClearLogs\ClearLogsServiceProvider;
+use Pfrug\ClearLogs\ClearLogsServiceProvider;
 //use Illuminate\Foundation\Application;
 use Carbon\Carbon;
 use DateTime;

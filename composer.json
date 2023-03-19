@@ -1,16 +1,16 @@
 {
-    "name": "frugone/clear-logs",
+    "name": "pfrug/clear-logs",
     "description": "Removes and truncates old logs.",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Frugone\\ClearLogs\\": "src/"
+            "Pfrug\\ClearLogs\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Frugone\\ClearLogs\\Tests\\": "tests/"
+            "Pfrug\\ClearLogs\\Tests\\": "tests/"
         }
     },
     "authors": [
