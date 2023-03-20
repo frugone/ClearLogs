@@ -9,6 +9,7 @@ class ClearLogsTest extends TestCase
 {
     /**
      * @test
+     * @covers ClearLogs
      */
     public function singleLogtest()
     {
@@ -39,6 +40,7 @@ class ClearLogsTest extends TestCase
 
     /**
      * @test
+     * @covers ClearLogs
      */
     public function dailyLogTest()
     {

@@ -7,10 +7,9 @@ use Pfrug\ClearLogs\Console\Commands\ClearLogs;
 
 class ClearLogsServiceProvider extends ServiceProvider
 {
-
     public function boot()
     {
-         $this->publishes(
+        $this->publishes(
             [
                 __DIR__ . '/../config/clearlogs.php' => config_path('clearlogs.php'),
             ]
@@ -22,9 +21,8 @@ class ClearLogsServiceProvider extends ServiceProvider
         $this->commands([ClearLogs::class]);
 
         $this->mergeConfigFrom(
-                __DIR__.'/../config/clearlogs.php', 'clearlogs'
+            __DIR__ . '/../config/clearlogs.php',
+            'clearlogs'
         );
     }
-
-
 }
